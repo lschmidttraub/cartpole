@@ -1,0 +1,28 @@
+<mujoco model="cartpole">
+  <option integrator="RK4"/>
+ <asset>
+    <texture name="grid" type="2d" builtin="checker" rgb1=".1 .2 .3"
+     rgb2=".2 .3 .4" width="300" height="300"/>
+    <material name="grid" texture="grid" texrepeat="8 8" reflectance=".2"/>
+  </asset>
+  <worldbody>
+    <light diffuse=".5 .5 .5" pos="0 0 3" dir="0 0 -1"/>
+    <geom type="plane" size="2 2 0.1" rgba=".9 .9 .9 1" pos="0 0 -0.65" material="grid"/>
+    <body name="top">
+      <joint name="cart_slide" type="slide" axis="1 0 0" range="-1 1" limited="true" damping="0.5"/>
+      <geom name="cart" type="box" size="0.15 0.05 0.015"/>
+      <body name="ball_and_pole">
+        <joint type="hinge" axis="0 1 0" damping="0.1"/>
+        <geom name="ball" pos="0 0 0.4" size="0.05" rgba="0.5 0 0 1"/>
+        <geom name="pole" type="cylinder" pos = "0 0 0.2" size="0.004 0.2"/>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor joint="cart_slide" gear="10" ctrlrange="-1 1"/>
+  </actuator>
+  <keyframe>
+    <key name="init" qpos="0 0.1" qvel="0 0"/>
+    <key name="test" qpos="0 0.2" qvel="1 0"/>
+  </keyframe>
+</mujoco>
