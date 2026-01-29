@@ -1,3 +1,0 @@
-Sat Jan  3 11:23:34 2026
-ERROR: Auxiliary framebuffer is not complete, error 0x8cd6
-

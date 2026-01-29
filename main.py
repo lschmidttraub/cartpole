@@ -1,11 +1,10 @@
 import mujoco
-import mediapy as media
 import mujoco.viewer
 import os
 
 os.environ["LIBGL_ALWAYS_SOFTWARE"]="1"
 
-with open('envs/cartpole/cartpole.xml', 'r') as f:
+with open('envs/cartpole.xml', 'r') as f:
     xml = f.read()
 
 model = mujoco.MjModel.from_xml_string(xml)
